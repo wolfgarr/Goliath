@@ -33,17 +33,17 @@ void loop() {
   else if (left >= 20 && right < 20)
   {
     backward();
-    delay(500);
+    delay(millis()%1000+100);
     turnLeft();
-    delay(500);
+    delay(millis()%1000+100);
   }
   
   else if (left < 20 && right >= 20)
   {
     backward();
-    delay(500);
+    delay(millis()%1000+100);
     turnRight();
-    delay(500);
+    delay(millis()%1000+100);
   }
   
   else 
@@ -53,12 +53,12 @@ void loop() {
     if(millis()%2)
     {
       turnLeft();
-      delay(2500);
+      delay(millis()%5000);
     }
     else
     {
       turnRight();
-      delay(2500);
+      delay(3000);
     }
   }
 }
