@@ -33,23 +33,23 @@ void loop() {
   else if (left >= 20 && right < 20)
   {
     backward();
-    delay(millis()%1000+100);
+    delay(750);
     turnLeft();
-    delay(millis()%1000+100);
+    delay(millis()%2000+100);
   }
   
   else if (left < 20 && right >= 20)
   {
     backward();
-    delay(millis()%1000+100);
+    delay(750);
     turnRight();
-    delay(millis()%1000+100);
+    delay(millis()%2000+100);
   }
   
   else 
   {
     backward();
-    delay(1000);
+    delay(millis()%1000);
     if(millis()%2)
     {
       turnLeft();
@@ -66,10 +66,10 @@ void loop() {
 int readSensor(int ldr, int led)
 {
   digitalWrite(led, HIGH);
-  delay(20);
+  delay(10);
   int reading1 = analogRead(ldr);
   digitalWrite(led, LOW);
-  delay(20);
+  delay(10);
   int reading2 = analogRead(ldr);
   
   return (reading1-reading2);
