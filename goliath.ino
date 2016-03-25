@@ -22,20 +22,26 @@ void setup() {
 }
 
 void loop() {
-  delay(50);
-  if((readSensor(leftLDR, leftLed) >= 20) && (readSensor(rightLDR, rightLed) >= 20))
+  int left = readSensor(leftLDR, leftLed);
+  int right = readSensor(rightLDR, rightLed);
+  
+  if((left >= 20) && (right >= 20))
   {
     forward();
   }
   
-  else if ((readSensor(leftLDR, leftLed) >= 20) && (readSensor(rightLDR, rightLed) < 20))
+  else if (left >= 20 && right < 20)
   {
+    backward();
+    delay(500);
     turnLeft();
     delay(500);
   }
   
-  else if ((readSensor(leftLDR, leftLed) < 20) && (readSensor(rightLDR, rightLed) >= 20))
+  else if (left < 20 && right >= 20)
   {
+    backward();
+    delay(500);
     turnRight();
     delay(500);
   }
