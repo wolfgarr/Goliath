@@ -5,7 +5,7 @@
 #define leftLed 2
 #define rightLed 3
 
-#define threshold 20
+#define threshold 40
 
 Servo leftServo;
 Servo rightServo;
