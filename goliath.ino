@@ -5,6 +5,8 @@
 #define leftLed 2
 #define rightLed 3
 
+#define threshold 20
+
 Servo leftServo;
 Servo rightServo;
 
@@ -19,18 +21,20 @@ void setup() {
 
   digitalWrite(leftLed, LOW);
   digitalWrite(rightLed, LOW);
+
+  Serial.begin(115200);
 }
 
 void loop() {
   int left = readSensor(leftLDR, leftLed);
   int right = readSensor(rightLDR, rightLed);
   
-  if((left >= 20) && (right >= 20))
+  if((left >= threshold) && (right >= threshold))
   {
     forward();
   }
   
-  else if (left >= 20 && right < 20)
+  else if (left >= threshold && right < threshold)
   {
     backward();
     delay(750);
@@ -38,7 +42,7 @@ void loop() {
     delay(millis()%2000+100);
   }
   
-  else if (left < 20 && right >= 20)
+  else if (left < threshold && right >= threshold)
   {
     backward();
     delay(750);
@@ -71,6 +75,8 @@ int readSensor(int ldr, int led)
   digitalWrite(led, LOW);
   delay(10);
   int reading2 = analogRead(ldr);
+
+  Serial.println(reading1-reading2);
   
   return (reading1-reading2);
 }
